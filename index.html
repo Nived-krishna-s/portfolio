@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nived | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-light: #f0f4f8;
+    --bg-dark: #0a0a23;
+    --text-light: #0a0a23;
+    --text-dark: #f0f4f8;
+    --primary: #6c63ff;
+    --highlight: #7af5ff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.4s, color 0.4s;
+    cursor: none; /* Hide default cursor */
+  }
+
+  body.light {
+    background: var(--bg-light);
+    color: var(--text-light);
+  }
+
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+
+  header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  header h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    animation: neonFlash 2s infinite;
+  }
+
+  header p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    animation: slideUp 1.2s ease-out;
+  }
+
+  .toggle-theme {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    z-index: 10000;
+  }
+
+  section {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: glowText 2s infinite;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.1rem;
+    animation: fadeInUp 1.5s ease;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    background: var(--primary);
+    color: white;
+  }
+
+  .discord-button {
+    display: inline-block;
+    margin-top: 2rem;
+    background: #5865f2;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    animation: bounce 1.5s infinite;
+  }
+
+  /* Custom cursor arrow */
+  .custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    background: url('https://cdn-icons-png.flaticon.com/512/1410/1410598.png') no-repeat center center;
+    background-size: contain;
+    transform: translate(-10%, -10%); /* Adjust hotspot so tip of arrow matches pointer */
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  @keyframes slideUp {
+    0% {transform: translateY(30px); opacity: 0;}
+    100% {transform: translateY(0); opacity: 1;}
+  }
+
+  @keyframes fadeInUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+  @keyframes neonFlash {
+    0%, 100% {text-shadow: 0 0 10px #7af5ff, 0 0 20px #6c63ff;}
+    50% {text-shadow: 0 0 20px #7af5ff, 0 0 40px #6c63ff;}
+  }
+
+  @keyframes glowText {
+    0%, 100% {color: var(--highlight);}
+    50% {color: var(--primary);}
+  }
+
+  @keyframes bounce {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+  }
+</style>
+</head>
+<body class="light">
+
+<button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+
+<header>
+  <h1>Nived Krishna S</h1>
+  <p>Minimal. Creative. Developer Portfolio</p>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hi, I’m Nived Krishna S. I build websites that look good and feel great to use. Welcome to my digital space.</p>
+  <a href="https://discord.gg/WxJxK8EX" class="discord-button" target="_blank">Join My Discord</a>
+</section>
+
+<footer>
+  &copy; 2025 Nived Krishna S | All Rights Reserved | nksneeradam@gmail.com
+</footer>
+
+<!-- Custom cursor element -->
+<div class="custom-cursor"></div>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+  }
+
+  const cursor = document.querySelector('.custom-cursor');
+
+  window.addEventListener('mousemove', e => {
+    // Move the custom cursor instantly to the mouse position
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Optional: add a small scale effect on click
+  window.addEventListener('mousedown', () => {
+    cursor.style.transform = 'translate(-10%, -10%) scale(0.8)';
+  });
+  window.addEventListener('mouseup', () => {
+    cursor.style.transform = 'translate(-10%, -10%) scale(1)';
+  });
+</script>
+
+</body>
+</html>
